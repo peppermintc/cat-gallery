@@ -8,22 +8,13 @@ interface Action {
 }
 
 // Action Types
-const SET_SEARCH_KEYWORD = "SET_SEARCH_KEYWORD";
 const SET_CAT_LIST = "SET_CAT_LIST";
 const SET_AUTO_COMPLETE = "SET_AUTO_COMPLETE";
 
 // Action Creators
-export const setSearchKeyword =
-  (newSearchKeyword: string) => (dispatch: Dispatch) => {
-    dispatch({
-      type: SET_SEARCH_KEYWORD,
-      payload: newSearchKeyword,
-    });
-  };
-
 export const setCatList =
-  (newSearchKeyword: string) => async (dispatch: Dispatch) => {
-    const response = await fetchCatList(newSearchKeyword);
+  (searchKeyword: string) => async (dispatch: Dispatch) => {
+    const response = await fetchCatList(searchKeyword);
 
     dispatch({
       type: SET_CAT_LIST,
@@ -50,7 +41,6 @@ export const setAutoComplete =
 
 // Initial State
 const initialState = {
-  searchKeyword: "",
   catList: [],
   autoComplete: [],
 };
@@ -58,11 +48,6 @@ const initialState = {
 // Reducer
 const searchReducer = (state = initialState, action: Action) => {
   switch (action.type) {
-    case SET_SEARCH_KEYWORD:
-      return {
-        ...state,
-        searchKeyword: action.payload,
-      };
     case SET_CAT_LIST:
       return {
         ...state,

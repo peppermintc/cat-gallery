@@ -44,15 +44,14 @@ const Container = styled.div`
 `;
 
 const CatList = () => {
-  const { searchKeyword, catList } = useSelector(
-    (state: RootStateOrAny) => state.search
-  );
+  const { catList } = useSelector((state: RootStateOrAny) => state.search);
 
   const dispatch = useDispatch();
   const { setCatList } = bindActionCreators(searchActionCreators, dispatch);
 
   useEffect(() => {
     setCatList("");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
