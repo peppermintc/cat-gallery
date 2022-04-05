@@ -1,4 +1,6 @@
-import { MouseEvent } from "react";
+import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as searchActionCreators from "../modules/search";
 import styled from "styled-components";
 
 const List = styled.div`
@@ -31,19 +33,28 @@ const Item = styled.div`
 `;
 
 const AutoComplete = () => {
-  const data: any[] = [{ id: 0 }]; // type 수정 필요
+  const autoCompleteList = useSelector(
+    (state: RootStateOrAny) => state.search.autoComplete
+  );
 
-  const onItemClick = (e: MouseEvent<HTMLDivElement>) => {
-    console.log("onItemClick", e.target);
+  const dispatch = useDispatch();
+  const { setCatList, setAutoComplete } = bindActionCreators(
+    searchActionCreators,
+    dispatch
+  );
+
+  const onItemClick = (item: any) => {
+    setCatList(item.name);
+    setAutoComplete("");
   };
 
   return (
     <>
-      {data.length > 0 && (
+      {autoCompleteList.length > 0 && (
         <List>
-          {data.map((item) => (
-            <Item key={item.id} onClick={onItemClick}>
-              asdf
+          {autoCompleteList.map((item: any) => (
+            <Item key={item.id} onClick={() => onItemClick(item)}>
+              {item.name}
             </Item>
           ))}
         </List>

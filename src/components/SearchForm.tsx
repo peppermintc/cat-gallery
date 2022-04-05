@@ -30,7 +30,7 @@ const SearchForm = () => {
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const dispatch = useDispatch();
-  const { setSearchKeyword } = bindActionCreators(
+  const { setCatList, setAutoComplete } = bindActionCreators(
     searchActionCreators,
     dispatch
   );
@@ -38,15 +38,14 @@ const SearchForm = () => {
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    console.log("onFormSubmit");
-
     if (!searchInputRef.current) return;
-    setSearchKeyword(searchInputRef.current.value);
+    setCatList(searchInputRef.current.value);
     searchInputRef.current.value = "";
   };
 
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log("onInputChange", e.target.value);
+    const inputValue = e.target.value;
+    setAutoComplete(inputValue);
   };
 
   return (

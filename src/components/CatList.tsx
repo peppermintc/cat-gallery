@@ -52,16 +52,21 @@ const CatList = () => {
   const { setCatList } = bindActionCreators(searchActionCreators, dispatch);
 
   useEffect(() => {
-    setCatList(searchKeyword);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchKeyword]);
+    setCatList("");
+  }, []);
 
   return (
     <Container>
       {catList.map((catInfo: any) => (
         <CatItem key={catInfo.id}>
           <Image
-            src={catInfo.image ? catInfo.image.url : defaultCatImage}
+            src={
+              catInfo.image
+                ? catInfo.image.url
+                : catInfo.reference_image_id
+                ? `https://cdn2.thecatapi.com/images/${catInfo.reference_image_id}.jpg`
+                : defaultCatImage
+            }
             alt="cat"
           />
           <BreedName>{catInfo.name}</BreedName>
