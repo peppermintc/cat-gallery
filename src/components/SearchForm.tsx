@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useRef } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as searchActionCreators from "../modules/search";
@@ -27,7 +27,7 @@ const SearchButton = styled.button`
 `;
 
 const SearchForm = () => {
-  const searchInputRef = useRef<HTMLInputElement>(null);
+  const [inputValue, setInputValue] = useState("");
 
   const dispatch = useDispatch();
   const { setCatList, setAutoComplete } = bindActionCreators(
@@ -35,22 +35,23 @@ const SearchForm = () => {
     dispatch
   );
 
+  const resetSearchInput = () => setInputValue("");
+
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-
-    if (!searchInputRef.current) return;
-    setCatList(searchInputRef.current.value);
-    searchInputRef.current.value = "";
+    setCatList(inputValue);
+    resetSearchInput();
   };
 
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    setAutoComplete(inputValue);
+    const newInputValue = e.target.value;
+    setInputValue(newInputValue);
+    setAutoComplete(newInputValue);
   };
 
   return (
     <form onSubmit={onFormSubmit}>
-      <SearchInput type="text" ref={searchInputRef} onChange={onInputChange} />
+      <SearchInput type="text" onChange={onInputChange} />
       <SearchButton>Search</SearchButton>
     </form>
   );

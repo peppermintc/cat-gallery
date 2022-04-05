@@ -3,7 +3,7 @@ import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import styled from "styled-components";
 import * as searchActionCreators from "../modules/search";
-import defaultCatImage from "../img/defaultCat.jpeg";
+import defaultCatImage from "../img/defaultCat.jpg";
 
 const Image = styled.img`
   width: 100%;

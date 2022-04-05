@@ -1,11 +1,11 @@
 import ReactDOM from "react-dom/client";
-import GlobalStyle from "./styles/GlobalStyle";
-import App from "./App";
-import rootReducer from "./modules";
-import { applyMiddleware, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import ReduxThunk from "redux-thunk";
+import rootReducer from "./modules";
+import GlobalStyle from "./styles/GlobalStyle";
+import App from "./App";
 
 const store = createStore(
   rootReducer,

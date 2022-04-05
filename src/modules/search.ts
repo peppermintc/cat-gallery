@@ -1,7 +1,7 @@
 import { Dispatch } from "redux";
 import { fetchCatList } from "../api/catApi";
 
-// Types
+// Interfaces
 interface Action {
   type: string;
   payload: [];
