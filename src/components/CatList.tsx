@@ -43,7 +43,7 @@ const Container = styled.div`
 `;
 
 const CatList = () => {
-  const { catList } = useSelector((state: RootStateOrAny) => state.search);
+  const { catList } = useSelector((state: RootStateOrAny) => state.cat);
   const { setCatList } = useActionCreators();
 
   useEffect(() => {

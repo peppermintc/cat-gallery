@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as searchActionCreators from "../modules/search";
+import * as searchActionCreators from "../modules/cat";
 
 const useActionCreators = () => {
   const dispatch = useDispatch();

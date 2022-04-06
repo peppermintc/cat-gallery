@@ -33,7 +33,7 @@ const Item = styled.div`
 
 const AutoComplete = () => {
   const autoCompleteList = useSelector(
-    (state: RootStateOrAny) => state.search.autoComplete
+    (state: RootStateOrAny) => state.cat.autoComplete
   );
   const { setCatList, setAutoComplete } = useActionCreators();
 

@@ -29,10 +29,10 @@ export const setAutoComplete =
         payload: [],
       });
     } else {
-      const catList = await fetchCatList(currentInputValue);
+      const autoCompleteList = await fetchCatList(currentInputValue);
       dispatch({
         type: SET_AUTO_COMPLETE,
-        payload: catList,
+        payload: autoCompleteList,
       });
     }
   };
@@ -44,7 +44,7 @@ const initialState = {
 };
 
 // Reducer
-const searchReducer = (state = initialState, action: Action) => {
+const catReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case SET_CAT_LIST:
       return {
@@ -61,4 +61,4 @@ const searchReducer = (state = initialState, action: Action) => {
   }
 };
 
-export default searchReducer;
+export default catReducer;
