@@ -12,10 +12,6 @@
 - 검색어 자동완성 기능 구현 (검색어 두글자 이상시 동작)
 - 검색시 고양이 리스트 출력
 
-### 추가 기능
-
-- 고양이 종 정보 중 `country_code` 항목과 `flagcdn API`를 사용하여 국기 표시
-
 ---
 
 ### 실행 방법
@@ -85,3 +81,11 @@ src
 - Method: GET
 - URL: https://flagcdn.com/24x18/{country_code}.png
 - response: 국기 이미지
+
+---
+
+### 추가 기능
+
+- 고양이 종 정보 중 `country_code` 항목과 `flagcdn API`를 사용하여 국기 표시
+
+  <img src='./src/img/flagExample.png' />
