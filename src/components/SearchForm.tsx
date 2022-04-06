@@ -30,11 +30,13 @@ const SearchForm = () => {
   const { setCatList, setAutoComplete } = useActionCreators();
 
   const resetSearchInput = () => setInputValue("");
+  const resetAutoComplete = () => setAutoComplete("");
 
   const onFormSubmit = (e: FormEvent) => {
     e.preventDefault();
     setCatList(inputValue);
     resetSearchInput();
+    resetAutoComplete();
   };
 
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,7 +47,7 @@ const SearchForm = () => {
 
   return (
     <form onSubmit={onFormSubmit}>
-      <SearchInput type="text" onChange={onInputChange} />
+      <SearchInput type="text" onChange={onInputChange} value={inputValue} />
       <SearchButton>Search</SearchButton>
     </form>
   );
