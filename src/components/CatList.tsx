@@ -1,8 +1,10 @@
 import { useEffect } from "react";
-import { RootStateOrAny, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import useActionCreators from "../hooks/useActionCreators";
 import defaultCatImage from "../img/defaultCat.jpg";
+import { RootState } from "../modules";
+import { Cat } from "../modules/cat";
 
 const Image = styled.img`
   width: 100%;
@@ -43,7 +45,7 @@ const Container = styled.div`
 `;
 
 const CatList = () => {
-  const { catList } = useSelector((state: RootStateOrAny) => state.cat);
+  const { catList } = useSelector((state: RootState) => state.cat);
   const { setCatList } = useActionCreators();
 
   useEffect(() => {
@@ -53,7 +55,7 @@ const CatList = () => {
 
   return (
     <Container>
-      {catList.map((catInfo: any) => (
+      {catList.map((catInfo: Cat) => (
         <CatItem key={catInfo.id}>
           <Image
             src={

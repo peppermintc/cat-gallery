@@ -1,5 +1,9 @@
 import { combineReducers } from "redux";
-import catReducer from "./cat";
+import catReducer, { CatState } from "./cat";
+
+export interface RootState {
+  cat: CatState;
+}
 
 const rootReducer = combineReducers({
   cat: catReducer,

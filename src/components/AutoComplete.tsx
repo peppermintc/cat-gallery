@@ -1,6 +1,8 @@
-import { RootStateOrAny, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import useActionCreators from "../hooks/useActionCreators";
+import { RootState } from "../modules";
+import { Cat } from "../modules/cat";
 
 const List = styled.div`
   position: absolute;
@@ -33,12 +35,12 @@ const Item = styled.div`
 
 const AutoComplete = () => {
   const autoCompleteList = useSelector(
-    (state: RootStateOrAny) => state.cat.autoComplete
+    (state: RootState) => state.cat.autoComplete
   );
   const { setCatList, setAutoComplete } = useActionCreators();
 
-  const onItemClick = (item: any) => {
-    setCatList(item.name);
+  const onItemClick = (cat: Cat) => {
+    setCatList(cat.name);
     setAutoComplete("");
   };
 
@@ -46,9 +48,9 @@ const AutoComplete = () => {
     <>
       {autoCompleteList.length > 0 && (
         <List>
-          {autoCompleteList.map((item: any) => (
-            <Item key={item.id} onClick={() => onItemClick(item)}>
-              {item.name}
+          {autoCompleteList.map((cat: Cat) => (
+            <Item key={cat.id} onClick={() => onItemClick(cat)}>
+              {cat.name}
             </Item>
           ))}
         </List>

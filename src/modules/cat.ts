@@ -7,6 +7,20 @@ interface Action {
   payload: [];
 }
 
+export interface Cat {
+  id: string;
+  name: string;
+  reference_image_id?: string;
+  image?: {
+    url: string;
+  };
+}
+
+export interface CatState {
+  catList: Cat[];
+  autoComplete: Cat[];
+}
+
 // Action Types
 const SET_CAT_LIST = "SET_CAT_LIST";
 const SET_AUTO_COMPLETE = "SET_AUTO_COMPLETE";
@@ -14,7 +28,7 @@ const SET_AUTO_COMPLETE = "SET_AUTO_COMPLETE";
 // Action Creators
 export const setCatList =
   (searchKeyword: string) => async (dispatch: Dispatch) => {
-    const catList = await fetchCatList(searchKeyword);
+    const catList: Cat[] = await fetchCatList(searchKeyword);
     dispatch({
       type: SET_CAT_LIST,
       payload: catList,
@@ -29,7 +43,7 @@ export const setAutoComplete =
         payload: [],
       });
     } else {
-      const autoCompleteList = await fetchCatList(currentInputValue);
+      const autoCompleteList: Cat[] = await fetchCatList(currentInputValue);
       dispatch({
         type: SET_AUTO_COMPLETE,
         payload: autoCompleteList,
@@ -38,13 +52,13 @@ export const setAutoComplete =
   };
 
 // Initial State
-const initialState = {
+const initialState: CatState = {
   catList: [],
   autoComplete: [],
 };
 
 // Reducer
-const catReducer = (state = initialState, action: Action) => {
+const catReducer = (state: CatState = initialState, action: Action) => {
   switch (action.type) {
     case SET_CAT_LIST:
       return {
