@@ -18,6 +18,7 @@ const BreedName = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: rgba(90, 0, 10, 0.4);
@@ -26,6 +27,10 @@ const BreedName = styled.div`
   font-size: 1.5em;
   transition: opacity 0.3s;
   opacity: 0;
+`;
+
+const CountryFlag = styled.img`
+  margin-bottom: 10px;
 `;
 
 const CatItem = styled.div`
@@ -53,6 +58,12 @@ const CatList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const formatCountryCode = (inputCountryCode: string): string => {
+    let newCountryCode = inputCountryCode.toLowerCase();
+    if (newCountryCode === "sp") newCountryCode = "es";
+    return newCountryCode;
+  };
+
   return (
     <Container>
       {catList.map((catInfo: Cat) => (
@@ -67,7 +78,17 @@ const CatList = () => {
             }
             alt="cat"
           />
-          <BreedName>{catInfo.name}</BreedName>
+          <BreedName>
+            {catInfo.country_code && (
+              <CountryFlag
+                src={`https://flagcdn.com/24x18/${formatCountryCode(
+                  catInfo.country_code
+                )}.png`}
+                alt="flag"
+              />
+            )}
+            {catInfo.name}
+          </BreedName>
         </CatItem>
       ))}
     </Container>
