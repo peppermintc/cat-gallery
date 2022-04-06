@@ -1,7 +1,6 @@
-import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import * as searchActionCreators from "../modules/search";
+import { RootStateOrAny, useSelector } from "react-redux";
 import styled from "styled-components";
+import useActionCreators from "../hooks/useActionCreators";
 
 const List = styled.div`
   position: absolute;
@@ -36,12 +35,7 @@ const AutoComplete = () => {
   const autoCompleteList = useSelector(
     (state: RootStateOrAny) => state.search.autoComplete
   );
-
-  const dispatch = useDispatch();
-  const { setCatList, setAutoComplete } = bindActionCreators(
-    searchActionCreators,
-    dispatch
-  );
+  const { setCatList, setAutoComplete } = useActionCreators();
 
   const onItemClick = (item: any) => {
     setCatList(item.name);

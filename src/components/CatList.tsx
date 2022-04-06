@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
+import { RootStateOrAny, useSelector } from "react-redux";
 import styled from "styled-components";
-import * as searchActionCreators from "../modules/search";
+import useActionCreators from "../hooks/useActionCreators";
 import defaultCatImage from "../img/defaultCat.jpg";
 
 const Image = styled.img`
@@ -45,9 +44,7 @@ const Container = styled.div`
 
 const CatList = () => {
   const { catList } = useSelector((state: RootStateOrAny) => state.search);
-
-  const dispatch = useDispatch();
-  const { setCatList } = bindActionCreators(searchActionCreators, dispatch);
+  const { setCatList } = useActionCreators();
 
   useEffect(() => {
     setCatList("");

@@ -1,8 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
-import * as searchActionCreators from "../modules/search";
 import styled from "styled-components";
+import useActionCreators from "../hooks/useActionCreators";
 
 const SearchInput = styled.input`
   width: 12.5rem;
@@ -29,11 +27,7 @@ const SearchButton = styled.button`
 const SearchForm = () => {
   const [inputValue, setInputValue] = useState("");
 
-  const dispatch = useDispatch();
-  const { setCatList, setAutoComplete } = bindActionCreators(
-    searchActionCreators,
-    dispatch
-  );
+  const { setCatList, setAutoComplete } = useActionCreators();
 
   const resetSearchInput = () => setInputValue("");
 
