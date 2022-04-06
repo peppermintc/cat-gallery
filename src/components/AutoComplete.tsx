@@ -34,9 +34,7 @@ const Item = styled.div`
 `;
 
 const AutoComplete = () => {
-  const autoCompleteList = useSelector(
-    (state: RootState) => state.cat.autoComplete
-  );
+  const { autoComplete } = useSelector((state: RootState) => state.cat);
   const { setCatList, setAutoComplete } = useActionCreators();
 
   const onItemClick = (cat: Cat) => {
@@ -46,9 +44,9 @@ const AutoComplete = () => {
 
   return (
     <>
-      {autoCompleteList.length > 0 && (
+      {autoComplete.length > 0 && (
         <List>
-          {autoCompleteList.map((cat: Cat) => (
+          {autoComplete.map((cat: Cat) => (
             <Item key={cat.id} onClick={() => onItemClick(cat)}>
               {cat.name}
             </Item>
