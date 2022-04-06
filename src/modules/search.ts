@@ -14,11 +14,10 @@ const SET_AUTO_COMPLETE = "SET_AUTO_COMPLETE";
 // Action Creators
 export const setCatList =
   (searchKeyword: string) => async (dispatch: Dispatch) => {
-    const response = await fetchCatList(searchKeyword);
-
+    const catList = await fetchCatList(searchKeyword);
     dispatch({
       type: SET_CAT_LIST,
-      payload: response ? response.data : [],
+      payload: catList,
     });
   };
 
@@ -30,11 +29,10 @@ export const setAutoComplete =
         payload: [],
       });
     } else {
-      const response = await fetchCatList(currentInputValue);
-
+      const catList = await fetchCatList(currentInputValue);
       dispatch({
         type: SET_AUTO_COMPLETE,
-        payload: response ? response.data : [],
+        payload: catList,
       });
     }
   };
