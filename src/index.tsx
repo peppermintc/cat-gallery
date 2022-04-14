@@ -6,6 +6,7 @@ import ReduxThunk from "redux-thunk";
 import rootReducer from "./modules";
 import GlobalStyle from "./styles/GlobalStyle";
 import App from "./App";
+import React from "react";
 
 const store = createStore(
   rootReducer,
@@ -17,8 +18,10 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <Provider store={store}>
-    <GlobalStyle />
-    <App />
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <GlobalStyle />
+      <App />
+    </Provider>
+  </React.StrictMode>
 );
