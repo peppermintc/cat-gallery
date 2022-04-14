@@ -58,6 +58,24 @@ const CatList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const getCatImageSrc = (catInfo: Cat) => {
+    const imageObjectExist = catInfo.image !== undefined;
+    const imageReferenceIdExist = catInfo.reference_image_id !== undefined;
+
+    if (imageObjectExist) {
+      return catInfo.image?.url;
+    }
+
+    if (imageReferenceIdExist) {
+      return `https://cdn2.thecatapi.com/images/${catInfo.reference_image_id}.jpg`;
+    }
+
+    return defaultCatImage;
+  };
+
+  const getFlagImageSrc = (catInfo: Cat) =>
+    `https://flagcdn.com/24x18/${formatCountryCode(catInfo.country_code)}.png`;
+
   const formatCountryCode = (inputCountryCode: string): string => {
     let newCountryCode = inputCountryCode.toLowerCase();
     if (newCountryCode === "sp") newCountryCode = "es";
@@ -68,25 +86,9 @@ const CatList = () => {
     <Container>
       {catList.map((catInfo: Cat) => (
         <CatItem key={catInfo.id}>
-          <Image
-            src={
-              catInfo.image
-                ? catInfo.image.url
-                : catInfo.reference_image_id
-                ? `https://cdn2.thecatapi.com/images/${catInfo.reference_image_id}.jpg`
-                : defaultCatImage
-            }
-            alt="cat"
-          />
+          <Image src={getCatImageSrc(catInfo)} alt="cat" />
           <BreedName>
-            {catInfo.country_code && (
-              <CountryFlag
-                src={`https://flagcdn.com/24x18/${formatCountryCode(
-                  catInfo.country_code
-                )}.png`}
-                alt="flag"
-              />
-            )}
+            <CountryFlag src={getFlagImageSrc(catInfo)} alt="flag" />
             {catInfo.name}
           </BreedName>
         </CatItem>

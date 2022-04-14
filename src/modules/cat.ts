@@ -11,7 +11,7 @@ export interface Cat {
   id: string;
   name: string;
   reference_image_id?: string;
-  country_code?: string;
+  country_code: string;
   image?: {
     url: string;
   };
