@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux";
-import styled from "styled-components";
-import useActionCreators from "../hooks/useActionCreators";
-import { RootState } from "../modules";
-import { Cat } from "../modules/cat";
+import { useSelector } from 'react-redux';
+import styled from 'styled-components';
+import useActionCreators from '../hooks/useActionCreators';
+import { RootState } from '../modules';
+import { Cat } from '../modules/cat';
 
 const List = styled.div`
   position: absolute;
@@ -39,7 +39,7 @@ const AutoComplete = () => {
 
   const onItemClick = (cat: Cat) => {
     setCatList(cat.name);
-    setAutoComplete("");
+    setAutoComplete('');
   };
 
   return (

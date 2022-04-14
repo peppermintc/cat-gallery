@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import AutoComplete from "./AutoComplete";
-import SearchForm from "./SearchForm";
+import styled from 'styled-components';
+import AutoComplete from './AutoComplete';
+import SearchForm from './SearchForm';
 
 const Container = styled.section`
   position: relative;

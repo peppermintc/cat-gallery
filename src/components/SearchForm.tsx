@@ -1,7 +1,7 @@
-import { ChangeEvent, FormEvent, useMemo, useState } from "react";
-import { debounce } from "lodash";
-import styled from "styled-components";
-import useActionCreators from "../hooks/useActionCreators";
+import { ChangeEvent, FormEvent, useMemo, useState } from 'react';
+import { debounce } from 'lodash';
+import styled from 'styled-components';
+import useActionCreators from '../hooks/useActionCreators';
 
 const SearchInput = styled.input`
   width: 12.5rem;
@@ -26,16 +26,16 @@ const SearchButton = styled.button`
 `;
 
 const SearchForm = () => {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
   const { setCatList, setAutoComplete } = useActionCreators();
 
-  const resetSearchInput = () => setInputValue("");
-  const resetAutoComplete = () => setAutoComplete("");
+  const resetSearchInput = () => setInputValue('');
+  const resetAutoComplete = () => setAutoComplete('');
 
   const debounceSetAutoComplete = useMemo(
     () => debounce((newInputValue) => setAutoComplete(newInputValue), 200),
-    [setAutoComplete]
+    [setAutoComplete],
   );
 
   const onFormSubmit = (e: FormEvent) => {

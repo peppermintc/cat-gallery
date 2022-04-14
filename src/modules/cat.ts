@@ -1,5 +1,5 @@
-import { Dispatch } from "redux";
-import { fetchCatList } from "../api/catApi";
+import { Dispatch } from 'redux';
+import { fetchCatList } from '../api/catApi';
 
 // Interfaces
 interface Action {
@@ -23,8 +23,8 @@ export interface CatState {
 }
 
 // Action Types
-const SET_CAT_LIST = "SET_CAT_LIST";
-const SET_AUTO_COMPLETE = "SET_AUTO_COMPLETE";
+const SET_CAT_LIST = 'SET_CAT_LIST';
+const SET_AUTO_COMPLETE = 'SET_AUTO_COMPLETE';
 
 // Action Creators
 export const setCatList =

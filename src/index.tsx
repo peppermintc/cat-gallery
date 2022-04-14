@@ -1,20 +1,20 @@
-import ReactDOM from "react-dom/client";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { createStore, applyMiddleware } from "redux";
-import { Provider } from "react-redux";
-import ReduxThunk from "redux-thunk";
-import rootReducer from "./modules";
-import GlobalStyle from "./styles/GlobalStyle";
-import App from "./App";
-import React from "react";
+import ReactDOM from 'react-dom/client';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import ReduxThunk from 'redux-thunk';
+import rootReducer from './modules';
+import GlobalStyle from './styles/GlobalStyle';
+import App from './App';
+import React from 'react';
 
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(ReduxThunk))
+  composeWithDevTools(applyMiddleware(ReduxThunk)),
 );
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLDivElement
+  document.getElementById('root') as HTMLDivElement,
 );
 
 root.render(
@@ -23,5 +23,5 @@ root.render(
       <GlobalStyle />
       <App />
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

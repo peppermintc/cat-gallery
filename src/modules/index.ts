@@ -1,5 +1,5 @@
-import { combineReducers } from "redux";
-import catReducer, { CatState } from "./cat";
+import { combineReducers } from 'redux';
+import catReducer, { CatState } from './cat';
 
 export interface RootState {
   cat: CatState;

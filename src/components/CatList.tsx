@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import styled from "styled-components";
-import useActionCreators from "../hooks/useActionCreators";
-import defaultCatImage from "../img/defaultCat.jpg";
-import { RootState } from "../modules";
-import { Cat } from "../modules/cat";
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import styled from 'styled-components';
+import useActionCreators from '../hooks/useActionCreators';
+import defaultCatImage from '../img/defaultCat.jpg';
+import { RootState } from '../modules';
+import { Cat } from '../modules/cat';
 
 const Image = styled.img`
   width: 100%;
@@ -54,7 +54,7 @@ const CatList = () => {
   const { setCatList } = useActionCreators();
 
   useEffect(() => {
-    setCatList("");
+    setCatList('');
   }, [setCatList]);
 
   const getCatImageSrc = (catInfo: Cat) => {
@@ -77,7 +77,7 @@ const CatList = () => {
 
   const formatCountryCode = (inputCountryCode: string): string => {
     let newCountryCode = inputCountryCode.toLowerCase();
-    if (newCountryCode === "sp") newCountryCode = "es";
+    if (newCountryCode === 'sp') newCountryCode = 'es';
     return newCountryCode;
   };
 
