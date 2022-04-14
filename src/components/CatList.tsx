@@ -58,14 +58,14 @@ const CatList = () => {
   }, [setCatList]);
 
   const getCatImageSrc = (catInfo: Cat) => {
-    const imageObjectExist = catInfo.image !== undefined;
-    const imageReferenceIdExist = catInfo.reference_image_id !== undefined;
+    const hasImageObject = catInfo.image !== undefined;
+    const hasReferenceImageId = catInfo.reference_image_id !== undefined;
 
-    if (imageObjectExist) {
+    if (hasImageObject) {
       return catInfo.image?.url;
     }
 
-    if (imageReferenceIdExist) {
+    if (hasReferenceImageId) {
       return `https://cdn2.thecatapi.com/images/${catInfo.reference_image_id}.jpg`;
     }
 
