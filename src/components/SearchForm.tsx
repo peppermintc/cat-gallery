@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useCallback, useState } from "react";
+import { ChangeEvent, FormEvent, useMemo, useState } from "react";
 import { debounce } from "lodash";
 import styled from "styled-components";
 import useActionCreators from "../hooks/useActionCreators";
@@ -33,10 +33,9 @@ const SearchForm = () => {
   const resetSearchInput = () => setInputValue("");
   const resetAutoComplete = () => setAutoComplete("");
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const debounceSetAutoComplete = useCallback(
-    debounce((newInputValue) => setAutoComplete(newInputValue), 200),
-    []
+  const debounceSetAutoComplete = useMemo(
+    () => debounce((newInputValue) => setAutoComplete(newInputValue), 200),
+    [setAutoComplete]
   );
 
   const onFormSubmit = (e: FormEvent) => {
