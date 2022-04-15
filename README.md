@@ -1,7 +1,5 @@
 ## Cat Gallery
 
-- 고양이 사진 갤러리
-
 ---
 
 ### 설명
@@ -32,6 +30,7 @@
 - Redux: 상태관리
 - Redux-thunk: 비동기 상태관리
 - axios: HTTP 통신
+- lodash: 자동완성 이벤트 debouncing
 
 ---
 
